@@ -1,7 +1,4 @@
-import chai, {expect} from 'chai'
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
-chai.use(sinonChai);
+import {expect, spy} from '../lib/index'
 
 describe('moccasin', () => {
    it('do basic chai assert', () => {
@@ -9,7 +6,7 @@ describe('moccasin', () => {
    });
 
    it('do basic sinon assert', () => {
-      let cb = sinon.spy();
+      let cb = spy();
       cb('hello foo');
       expect(cb).to.have.been.calledWith("hello foo");
    });

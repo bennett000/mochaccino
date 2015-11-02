@@ -2,10 +2,11 @@
   "name": "moccasin",
   "version": "1.0.0-alpha",
   "description": "United js test tools",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
+    "pretest": "babel src/index.js -o lib/index.js",
     "test": "mocha",
-    "compile": "babel test/test.js -o compiled.js"
+    "prepublish": "babel src/index.js -o lib/index.js"
   },
   "repository": {
     "type": "git",
