@@ -1,77 +1,77 @@
 import {expect, spy} from '../lib/index'
 
-describe('expectations', () => {
-   it('should do toBe expectation', () => {
+describe('expect', () => {
+   it('toBe', () => {
       expect(12).toBe(12);
       expect('abc').toBe('abc');
    });
 
-   it('should do not.toBe expectation', () => {
+   it('not.toBe', () => {
       expect('abc').not.toBe(12);
       expect(123).not.toBe('abc');
    });
 
-   it('should do toBeDefined expectation', () => {
+   it('toBeDefined', () => {
       expect(true).toBeDefined();
       expect({}).toBeDefined();
       expect(123).toBeDefined();
    });
 
-   it.skip('should do not.toBeDefined expectation', () => {
+   it.skip('not.toBeDefined', () => {
       let u;
       expect(undefined).not.toBeDefined();
       expect(u).not.toBeDefined();
    });
 
-   it('should do toBeUndefined expectation', () => {
+   it('toBeUndefined', () => {
       let u;
       expect(undefined).toBeUndefined();
       expect(u).toBeUndefined();
    });
 
-   it('should do not.toBeUndefined expectation', () => {
+   it('not.toBeUndefined', () => {
       expect(true).not.toBeUndefined();
       expect({}).not.toBeUndefined();
       expect(123).not.toBeUndefined();
    });
 
-   it('should do toBeNull expectation', () => {
+   it('toBeNull', () => {
       expect(null).toBeNull();
    });
 
-   it('should do not.toBeNull expectation', () => {
+   it('not.toBeNull', () => {
       expect(true).not.toBeNull();
       expect(false).not.toBeNull();
    });
 
-   it('should do toBeTruthy expectation', () => {
+   it('toBeTruthy', () => {
       expect(true).toBeTruthy();
    });
 
-   it('should do not.toBeTruthy expectation', () => {
+   it('not.toBeTruthy', () => {
       expect(false).not.toBeTruthy();
    });
 
-   it('should do toBeFalsy expectation', () => {
+   it('toBeFalsy', () => {
       expect(false).toBeFalsy();
    });
 
-   it('should do not.toBeFalsy expectation', () => {
+   it('not.toBeFalsy', () => {
       expect(true).not.toBeFalsy();
    });
 
-   it('should do toHaveBeenCalledWith expectation', () => {
+   it('toHaveBeenCalledWith', () => {
       let cb = spy();
       cb('hello foo');
       expect(cb).toHaveBeenCalledWith("hello foo");
    });
 
-   it('should do not.toHaveBeenCalledWith expectation', () => {
+   it('not.toHaveBeenCalledWith', () => {
       let cb = spy();
       expect(cb).not.toHaveBeenCalledWith("hello foo");
    });
 
-   it('should do toHaveBeenCalledTimes expectation', () => {
+   it('toHaveBeenCalledTimes', () => {
       let cb = spy();
       cb();
       cb();
@@ -79,7 +79,7 @@ describe('expectations', () => {
       expect(cb).toHaveBeenCalledTimes(3);
    });
 
-   it('should do not.toHaveBeenCalledTimes expectation', () => {
+   it('not.toHaveBeenCalledTimes', () => {
       let cb = spy();
       cb();
       cb();
