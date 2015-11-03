@@ -12,17 +12,17 @@ export function spy(){
 }
 
 class Expect {
-    constructor(expected){
-        this._expectation = chaiExpect(expected);
+    constructor(subject){
+        this._subject = chaiExpect(subject);
     }
 
     get not(){
-        this._expectation = this._expectation.not;
+        this._subject = this._subject.not;
         return this;
     }
 
     toBe(arg){
-        this._expectation.to.equal(arg);
+        this._subject.to.equal(arg);
     }
 
     toContain(){
@@ -38,7 +38,7 @@ class Expect {
     }
 
     toHaveBeenCalledWith(...args){
-        this._expectation.to.have.been.calledWith(...args);
+        this._subject.to.have.been.calledWith(...args);
     }
 
     toBeDefined(){

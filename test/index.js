@@ -11,3 +11,4 @@ describe('moccasin', () => {
       expect(cb).toHaveBeenCalledWith("hello foo");
    });
 });
+
