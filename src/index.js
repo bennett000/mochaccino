@@ -29,24 +29,28 @@ class Expect {
 
     }
 
-    toEqual(){
-
+    toEqual(arg){
+        this._subject.to.equal(arg);
     }
 
     toHaveBeenCalled(){
-
+        this._subject.to.have.been.called;
     }
 
     toHaveBeenCalledWith(...args){
         this._subject.to.have.been.calledWith(...args);
     }
 
-    toBeDefined(){
+    toHaveBeenCalledTimes(callCount){
+        this._subject.to.have.been.callCount(callCount);
+    }
 
+    toBeDefined(){
+        this._subject.not.to.be.an('undefined');
     }
 
     toBeUndefined(){
-
+        this._subject.to.be.an('undefined');
     }
 
     toBeNull(){
