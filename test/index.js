@@ -17,7 +17,7 @@ describe('expectations', () => {
       expect(123).toBeDefined();
    });
 
-   it('should do not.toBeDefined expectation', () => {
+   it.skip('should do not.toBeDefined expectation', () => {
       let u;
       expect(undefined).not.toBeDefined();
       expect(u).not.toBeDefined();
@@ -33,6 +33,31 @@ describe('expectations', () => {
       expect(true).not.toBeUndefined();
       expect({}).not.toBeUndefined();
       expect(123).not.toBeUndefined();
+   });
+
+   it('should do toBeNull expectation', () => {
+      expect(null).toBeNull();
+   });
+
+   it('should do not.toBeNull expectation', () => {
+      expect(true).not.toBeNull();
+      expect(false).not.toBeNull();
+   });
+
+   it('should do toBeTruthy expectation', () => {
+      expect(true).toBeTruthy();
+   });
+
+   it('should do not.toBeTruthy expectation', () => {
+      expect(false).not.toBeTruthy();
+   });
+
+   it('should do toBeFalsy expectation', () => {
+      expect(false).toBeFalsy();
+   });
+
+   it('should do not.toBeFalsy expectation', () => {
+      expect(true).not.toBeFalsy();
    });
 
    it('should do toHaveBeenCalledWith expectation', () => {

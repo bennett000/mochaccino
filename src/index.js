@@ -54,15 +54,15 @@ class Expect {
     }
 
     toBeNull(){
-
+        this._subject.to.be.a('null');
     }
 
     toBeTruthy(){
-
+        this._subject.to.be.true;
     }
 
     toBeFalsy(){
-
+        this._subject.to.be.false;
     }
 
     toBeLessThan(){
