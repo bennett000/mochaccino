@@ -94,4 +94,12 @@ describe('expect', () => {
       expect(5).not.toBeLessThan(5);
       expect(5).not.toBeLessThan(4);
    });
+
+   it('toBeGreatherThan', () => {
+      expect(5).toBeGreatherThan(4);
+   });
+
+   it('not.toBeGreatherThan', () => {
+      expect(5).not.toBeGreatherThan(6);
+   });
 });
