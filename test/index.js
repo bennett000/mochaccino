@@ -85,4 +85,13 @@ describe('expect', () => {
       cb();
       expect(cb).not.toHaveBeenCalledTimes(3);
    });
+
+   it('toBeLessThan', () => {
+      expect(5).toBeLessThan(6);
+   });
+
+   it('not.toBeLessThan', () => {
+      expect(5).not.toBeLessThan(5);
+      expect(5).not.toBeLessThan(4);
+   });
 });

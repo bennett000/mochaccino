@@ -65,8 +65,8 @@ class Expect {
         this._subject.to.be.false;
     }
 
-    toBeLessThan(){
-
+    toBeLessThan(expectation){
+        this._subject.to.be.below(expectation)
     }
 
     toBeGreatherThan(){
