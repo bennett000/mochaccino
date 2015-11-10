@@ -74,11 +74,11 @@ class Expect {
     }
 
     toThrow(){
-
+        this._subject.to.throw();
     }
 
-    toThrowError(){
-
+    toThrowError(expectation){
+        this._subject.to.throw(expectation);
     }
 
     toMatch(){

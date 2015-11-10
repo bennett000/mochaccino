@@ -132,4 +132,47 @@ describe('expect', () => {
    it('not.toContain', () => {
       expect([1,2,3]).not.toContain(4);
    });
+
+   it('toThrow', () => {
+      let bar = () => {
+         throw "test";
+      };
+
+      expect(bar).toThrow();
+   });
+
+   it('not.toThrow', () => {
+      let foo = () => {
+         return 1 + 2;
+      };
+
+      expect(foo).not.toThrow();
+   });
+
+   it('toThrowError', () => {
+      let foo = () => {
+         throw new TypeError("foo bar baz");
+      };
+
+      expect(foo).toThrowError("foo bar baz");
+      expect(foo).toThrowError(/bar/);
+      expect(foo).toThrowError(TypeError);
+      expect(foo).toThrowError(TypeError, "foo bar baz");
+   });
+
+   it('not.toThrowError', () => {
+      let foo = () => {
+         return 1 + 2;
+      };
+
+      let bar = () => {
+         throw 'abc';
+      };
+
+      expect(foo).not.toThrowError("foo bar baz");
+      expect(foo).not.toThrowError(/bar/);
+      expect(foo).not.toThrowError(TypeError);
+      expect(foo).not.toThrowError(TypeError, "foo bar baz");
+      expect(bar).not.toThrowError(TypeError);
+   });
 });
