@@ -175,4 +175,15 @@ describe('expect', () => {
       expect(foo).not.toThrowError(TypeError, "foo bar baz");
       expect(bar).not.toThrowError(TypeError);
    });
+
+   it('toMatch', () => {
+      let message = "foo bar baz";
+      expect(message).toMatch(/bar/);
+      expect(message).toMatch("bar");
+   });
+
+   it('not.toMatch', () => {
+      let message = "foo bar baz";
+      expect(message).not.toMatch(/quux/);
+   });
 });

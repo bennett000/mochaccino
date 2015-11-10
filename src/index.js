@@ -81,7 +81,12 @@ class Expect {
         this._subject.to.throw(expectation);
     }
 
-    toMatch(){
-
+    toMatch(expectation){
+        if(typeof expectation === 'string'){
+            this._subject.to.have.string(expectation);
+        }
+        else {
+            this._subject.to.match(expectation);
+        }
     }
 }
