@@ -102,4 +102,12 @@ describe('expect', () => {
    it('not.toBeGreatherThan', () => {
       expect(5).not.toBeGreatherThan(6);
    });
+
+   it('toContain', () => {
+      expect([1,2,3]).toContain(3);
+   });
+
+   it('not.toContain', () => {
+      expect([1,2,3]).not.toContain(4);
+   });
 });

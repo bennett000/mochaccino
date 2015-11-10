@@ -25,8 +25,8 @@ class Expect {
         this._subject.to.equal(arg);
     }
 
-    toContain(){
-
+    toContain(expectation){
+        this._subject.to.include(expectation);
     }
 
     toEqual(arg){
