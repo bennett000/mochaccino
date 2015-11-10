@@ -30,7 +30,7 @@ class Expect {
     }
 
     toEqual(arg){
-        this._subject.to.equal(arg);
+        this._subject.to.eql(arg);
     }
 
     toHaveBeenCalled(){

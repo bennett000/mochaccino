@@ -2,13 +2,35 @@ import {expect, spy} from '../lib/index'
 
 describe('expect', () => {
    it('toBe', () => {
+      let a = [1,2,3],
+          o = {a:1, b:2};
+
       expect(12).toBe(12);
       expect('abc').toBe('abc');
+      expect(a).toBe(a);
+      expect(o).toBe(o);
    });
 
    it('not.toBe', () => {
       expect('abc').not.toBe(12);
       expect(123).not.toBe('abc');
+      expect([1,2,3]).not.toBe([1,2,3]);
+      expect([1,2,3]).not.toBe([1,2,3,4]);
+      expect({a:1, b:2}).not.toBe({a:1, b:2, c:3});
+   });
+
+   it('toEqual', () => {
+      expect(12).toEqual(12);
+      expect('abc').toEqual('abc');
+      expect([1,2,3]).toEqual([1,2,3]);
+      expect({a:1, b:2}).toEqual({a:1, b:2});
+   });
+
+   it('not.toEqual', () => {
+      expect('abc').not.toEqual(12);
+      expect(123).not.toEqual('abc');
+      expect([1,2,3]).not.toEqual([1,2,3,4]);
+      expect({a:1, b:2, c:3}).not.toEqual({a:1, b:2});
    });
 
    it('toBeDefined', () => {
