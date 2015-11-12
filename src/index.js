@@ -14,10 +14,12 @@ export function spy(){
 class Expect {
     constructor(subject){
         this._subject = chaiExpect(subject);
+        this._not = false;
     }
 
     get not(){
         this._subject = this._subject.not;
+        this._not = true;
         return this;
     }
 
@@ -46,7 +48,12 @@ class Expect {
     }
 
     toBeDefined(){
-        this._subject.not.to.be.an('undefined');
+        if(this._not){
+            throw new Error("toBeDefined assertion cannot be used with 'not' flag");
+        }
+        else {
+            this._subject.not.to.be.an('undefined');
+        }
     }
 
     toBeUndefined(){

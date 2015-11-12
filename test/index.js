@@ -39,10 +39,10 @@ describe('expect', () => {
       expect(123).toBeDefined();
    });
 
-   it.skip('not.toBeDefined', () => {
-      let u;
-      expect(undefined).not.toBeDefined();
-      expect(u).not.toBeDefined();
+   it('not.toBeDefined', () => {
+      expect(() => {
+         expect(undefined).not.toBeDefined();
+      }).toThrowError(Error);
    });
 
    it('toBeUndefined', () => {
