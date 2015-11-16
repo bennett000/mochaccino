@@ -1,8 +1,11 @@
 {
-  "name": "moccasin-js",
+  "name": "moccasin",
   "version": "1.0.0-alpha.1",
   "description": "United js test tools",
   "main": "lib/index.js",
+  "bin": {
+    "mocha": "./node_modules/.bin/mocha"
+  },
   "scripts": {
     "pretest": "babel src/index.js -o lib/index.js",
     "test": "mocha",
