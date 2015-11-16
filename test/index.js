@@ -1,6 +1,6 @@
 import {expect, spy} from '../lib/index';
 
-describe('expect', () => {
+describe('expectation', () => {
    it('toBe', () => {
       let a = [1,2,3],
           o = {a:1, b:2};
@@ -9,14 +9,17 @@ describe('expect', () => {
       expect('abc').toBe('abc');
       expect(a).toBe(a);
       expect(o).toBe(o);
+      expect(() => expect(o).toBe(a)).toThrow();
    });
 
    it('not.toBe', () => {
+      let a = [1,2,3];
       expect('abc').not.toBe(12);
       expect(123).not.toBe('abc');
       expect([1,2,3]).not.toBe([1,2,3]);
       expect([1,2,3]).not.toBe([1,2,3,4]);
       expect({a:1, b:2}).not.toBe({a:1, b:2, c:3});
+      expect(() => expect(a).not.toBe(a)).toThrow();
    });
 
    it('toEqual', () => {
@@ -24,6 +27,7 @@ describe('expect', () => {
       expect('abc').toEqual('abc');
       expect([1,2,3]).toEqual([1,2,3]);
       expect({a:1, b:2}).toEqual({a:1, b:2});
+      expect(() => expect([1,2]).toEqual([1])).toThrow();
    });
 
    it('not.toEqual', () => {
@@ -31,12 +35,14 @@ describe('expect', () => {
       expect(123).not.toEqual('abc');
       expect([1,2,3]).not.toEqual([1,2,3,4]);
       expect({a:1, b:2, c:3}).not.toEqual({a:1, b:2});
+      expect(() => expect([1]).not.toEqual([1])).toThrow();
    });
 
    it('toBeDefined', () => {
       expect(true).toBeDefined();
       expect({}).toBeDefined();
       expect(123).toBeDefined();
+      expect(() => expect(undefined).toBeDefined()).toThrow();
    });
 
    it('not.toBeDefined', () => {
