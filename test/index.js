@@ -194,14 +194,28 @@ describe('expectation', () => {
    });
 });
 
-describe('spies', () => {
-  it('should allow to restore original object', () => {
-      let obj = {a:  () => 'a', b: () => 'b'};
-      spy(obj, 'a');
-      expect(obj.a).not.toHaveBeenCalled();
-      obj.a.restore();
-      expect(() => {
+describe('spy interface', () => {
+   describe('restore', () => {
+      it('should allow to restore original object', () => {
+         let obj = {a:  () => 'a', b: () => 'b'};
+         spy(obj, 'a');
          expect(obj.a).not.toHaveBeenCalled();
-      }).toThrow();
-  });
+         obj.a.restore();
+         expect(() => {
+            expect(obj.a).not.toHaveBeenCalled();
+         }).toThrow();
+      });
+   });
+
+   describe('and.callThrough', () => {
+
+   });
+
+   describe('and.returnValue', () => {
+
+   });
+
+   describe('and.callFake', () => {
+
+   });
 });
