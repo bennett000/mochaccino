@@ -1,4 +1,4 @@
-import {expect, spy} from '../lib/index'
+import {expect, spy} from '../lib/index';
 
 describe('expect', () => {
    it('toBe', () => {
@@ -186,4 +186,16 @@ describe('expect', () => {
       let message = "foo bar baz";
       expect(message).not.toMatch(/quux/);
    });
+});
+
+describe('spies', () => {
+  it('should allow to restore original object', () => {
+      let obj = {a:  () => 'a', b: () => 'b'};
+      spy(obj, 'a');
+      expect(obj.a).not.toHaveBeenCalled();
+      obj.a.restore();
+      expect(() => {
+         expect(obj.a).not.toHaveBeenCalled();
+      }).toThrow();
+  });
 });

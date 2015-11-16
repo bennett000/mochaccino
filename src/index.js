@@ -7,8 +7,8 @@ export function expect(arg){
     return new Expect(arg);
 }
 
-export function spy(){
-    return sinon.spy();
+export function spy(...args){
+    return sinon.spy(...args);
 }
 
 class Expect {
