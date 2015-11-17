@@ -1,221 +1,222 @@
+/* eslint no-undef:0 */
 import {expect, spy} from '../lib/index';
 
 describe('expectation', () => {
-   it('toBe', () => {
-      let a = [1,2,3],
-          o = {a:1, b:2};
+    it('toBe', () => {
+        let a = [1, 2, 3],
+            o = {a: 1, b: 2};
 
-      expect(12).toBe(12);
-      expect('abc').toBe('abc');
-      expect(a).toBe(a);
-      expect(o).toBe(o);
-      expect(() => expect(o).toBe(a)).toThrow();
-   });
+        expect(12).toBe(12);
+        expect('abc').toBe('abc');
+        expect(a).toBe(a);
+        expect(o).toBe(o);
+        expect(() => expect(o).toBe(a)).toThrow();
+    });
 
-   it('not.toBe', () => {
-      let a = [1,2,3];
-      expect('abc').not.toBe(12);
-      expect(123).not.toBe('abc');
-      expect([1,2,3]).not.toBe([1,2,3]);
-      expect([1,2,3]).not.toBe([1,2,3,4]);
-      expect({a:1, b:2}).not.toBe({a:1, b:2, c:3});
-      expect(() => expect(a).not.toBe(a)).toThrow();
-   });
+    it('not.toBe', () => {
+        let a = [1, 2, 3];
+        expect('abc').not.toBe(12);
+        expect(123).not.toBe('abc');
+        expect([1, 2, 3]).not.toBe([1, 2, 3]);
+        expect([1, 2, 3]).not.toBe([1, 2, 3, 4]);
+        expect({a: 1, b: 2}).not.toBe({a: 1, b: 2, c: 3});
+        expect(() => expect(a).not.toBe(a)).toThrow();
+    });
 
-   it('toEqual', () => {
-      expect(12).toEqual(12);
-      expect('abc').toEqual('abc');
-      expect([1,2,3]).toEqual([1,2,3]);
-      expect({a:1, b:2}).toEqual({a:1, b:2});
-      expect(() => expect([1,2]).toEqual([1])).toThrow();
-   });
+    it('toEqual', () => {
+        expect(12).toEqual(12);
+        expect('abc').toEqual('abc');
+        expect([1, 2, 3]).toEqual([1, 2, 3]);
+        expect({a: 1, b: 2}).toEqual({a: 1, b: 2});
+        expect(() => expect([1, 2]).toEqual([1])).toThrow();
+    });
 
-   it('not.toEqual', () => {
-      expect('abc').not.toEqual(12);
-      expect(123).not.toEqual('abc');
-      expect([1,2,3]).not.toEqual([1,2,3,4]);
-      expect({a:1, b:2, c:3}).not.toEqual({a:1, b:2});
-      expect(() => expect([1]).not.toEqual([1])).toThrow();
-   });
+    it('not.toEqual', () => {
+        expect('abc').not.toEqual(12);
+        expect(123).not.toEqual('abc');
+        expect([1, 2, 3]).not.toEqual([1, 2, 3, 4]);
+        expect({a: 1, b: 2, c: 3}).not.toEqual({a: 1, b: 2});
+        expect(() => expect([1]).not.toEqual([1])).toThrow();
+    });
 
-   it('toBeDefined', () => {
-      expect(true).toBeDefined();
-      expect({}).toBeDefined();
-      expect(123).toBeDefined();
-      expect(() => expect(undefined).toBeDefined()).toThrow();
-   });
+    it('toBeDefined', () => {
+        expect(true).toBeDefined();
+        expect({}).toBeDefined();
+        expect(123).toBeDefined();
+        expect(() => expect(undefined).toBeDefined()).toThrow();
+    });
 
-   it('not.toBeDefined', () => {
-      expect(() => {
-         expect(undefined).not.toBeDefined();
-      }).toThrowError(Error);
-   });
+    it('not.toBeDefined', () => {
+        expect(() => {
+            expect(undefined).not.toBeDefined();
+        }).toThrowError(Error);
+    });
 
-   it('toBeUndefined', () => {
-      let u;
-      expect(undefined).toBeUndefined();
-      expect(u).toBeUndefined();
-   });
+    it('toBeUndefined', () => {
+        let u;
+        expect(undefined).toBeUndefined();
+        expect(u).toBeUndefined();
+    });
 
-   it('not.toBeUndefined', () => {
-      expect(true).not.toBeUndefined();
-      expect({}).not.toBeUndefined();
-      expect(123).not.toBeUndefined();
-   });
+    it('not.toBeUndefined', () => {
+        expect(true).not.toBeUndefined();
+        expect({}).not.toBeUndefined();
+        expect(123).not.toBeUndefined();
+    });
 
-   it('toBeNull', () => {
-      expect(null).toBeNull();
-   });
+    it('toBeNull', () => {
+        expect(null).toBeNull();
+    });
 
-   it('not.toBeNull', () => {
-      expect(true).not.toBeNull();
-      expect(false).not.toBeNull();
-   });
+    it('not.toBeNull', () => {
+        expect(true).not.toBeNull();
+        expect(false).not.toBeNull();
+    });
 
-   it('toBeTruthy', () => {
-      expect(true).toBeTruthy();
-   });
+    it('toBeTruthy', () => {
+        expect(true).toBeTruthy();
+    });
 
-   it('not.toBeTruthy', () => {
-      expect(false).not.toBeTruthy();
-   });
+    it('not.toBeTruthy', () => {
+        expect(false).not.toBeTruthy();
+    });
 
-   it('toBeFalsy', () => {
-      expect(false).toBeFalsy();
-   });
+    it('toBeFalsy', () => {
+        expect(false).toBeFalsy();
+    });
 
-   it('not.toBeFalsy', () => {
-      expect(true).not.toBeFalsy();
-   });
+    it('not.toBeFalsy', () => {
+        expect(true).not.toBeFalsy();
+    });
 
-   it('toHaveBeenCalledWith', () => {
-      let cb = spy();
-      cb('hello foo');
-      expect(cb).toHaveBeenCalledWith("hello foo");
-   });
+    it('toHaveBeenCalledWith', () => {
+        let cb = spy();
+        cb('hello foo');
+        expect(cb).toHaveBeenCalledWith('hello foo');
+    });
 
-   it('not.toHaveBeenCalledWith', () => {
-      let cb = spy();
-      expect(cb).not.toHaveBeenCalledWith("hello foo");
-   });
+    it('not.toHaveBeenCalledWith', () => {
+        let cb = spy();
+        expect(cb).not.toHaveBeenCalledWith('hello foo');
+    });
 
-   it('toHaveBeenCalledTimes', () => {
-      let cb = spy();
-      cb();
-      cb();
-      cb();
-      expect(cb).toHaveBeenCalledTimes(3);
-   });
+    it('toHaveBeenCalledTimes', () => {
+        let cb = spy();
+        cb();
+        cb();
+        cb();
+        expect(cb).toHaveBeenCalledTimes(3);
+    });
 
-   it('not.toHaveBeenCalledTimes', () => {
-      let cb = spy();
-      cb();
-      cb();
-      expect(cb).not.toHaveBeenCalledTimes(3);
-   });
+    it('not.toHaveBeenCalledTimes', () => {
+        let cb = spy();
+        cb();
+        cb();
+        expect(cb).not.toHaveBeenCalledTimes(3);
+    });
 
-   it('toBeLessThan', () => {
-      expect(5).toBeLessThan(6);
-   });
+    it('toBeLessThan', () => {
+        expect(5).toBeLessThan(6);
+    });
 
-   it('not.toBeLessThan', () => {
-      expect(5).not.toBeLessThan(5);
-      expect(5).not.toBeLessThan(4);
-   });
+    it('not.toBeLessThan', () => {
+        expect(5).not.toBeLessThan(5);
+        expect(5).not.toBeLessThan(4);
+    });
 
-   it('toBeGreatherThan', () => {
-      expect(5).toBeGreatherThan(4);
-   });
+    it('toBeGreatherThan', () => {
+        expect(5).toBeGreatherThan(4);
+    });
 
-   it('not.toBeGreatherThan', () => {
-      expect(5).not.toBeGreatherThan(6);
-   });
+    it('not.toBeGreatherThan', () => {
+        expect(5).not.toBeGreatherThan(6);
+    });
 
-   it('toContain', () => {
-      expect([1,2,3]).toContain(3);
-   });
+    it('toContain', () => {
+        expect([1, 2, 3]).toContain(3);
+    });
 
-   it('not.toContain', () => {
-      expect([1,2,3]).not.toContain(4);
-   });
+    it('not.toContain', () => {
+        expect([1, 2, 3]).not.toContain(4);
+    });
 
-   it('toThrow', () => {
-      let bar = () => {
-         throw "test";
-      };
+    it('toThrow', () => {
+        let bar = () => {
+            throw 'test';
+        };
 
-      expect(bar).toThrow();
-   });
+        expect(bar).toThrow();
+    });
 
-   it('not.toThrow', () => {
-      let foo = () => {
-         return 1 + 2;
-      };
+    it('not.toThrow', () => {
+        let foo = () => {
+            return 1 + 2;
+        };
 
-      expect(foo).not.toThrow();
-   });
+        expect(foo).not.toThrow();
+    });
 
-   it('toThrowError', () => {
-      let foo = () => {
-         throw new TypeError("foo bar baz");
-      };
+    it('toThrowError', () => {
+        let foo = () => {
+            throw new TypeError('foo bar baz');
+        };
 
-      expect(foo).toThrowError("foo bar baz");
-      expect(foo).toThrowError(/bar/);
-      expect(foo).toThrowError(TypeError);
-      expect(foo).toThrowError(TypeError, "foo bar baz");
-   });
+        expect(foo).toThrowError('foo bar baz');
+        expect(foo).toThrowError(/bar/);
+        expect(foo).toThrowError(TypeError);
+        expect(foo).toThrowError(TypeError, 'foo bar baz');
+    });
 
-   it('not.toThrowError', () => {
-      let foo = () => {
-         return 1 + 2;
-      };
+    it('not.toThrowError', () => {
+        let foo = () => {
+            return 1 + 2;
+        };
 
-      let bar = () => {
-         throw 'abc';
-      };
+        let bar = () => {
+            throw 'abc';
+        };
 
-      expect(foo).not.toThrowError("foo bar baz");
-      expect(foo).not.toThrowError(/bar/);
-      expect(foo).not.toThrowError(TypeError);
-      expect(foo).not.toThrowError(TypeError, "foo bar baz");
-      expect(bar).not.toThrowError(TypeError);
-   });
+        expect(foo).not.toThrowError('foo bar baz');
+        expect(foo).not.toThrowError(/bar/);
+        expect(foo).not.toThrowError(TypeError);
+        expect(foo).not.toThrowError(TypeError, 'foo bar baz');
+        expect(bar).not.toThrowError(TypeError);
+    });
 
-   it('toMatch', () => {
-      let message = "foo bar baz";
-      expect(message).toMatch(/bar/);
-      expect(message).toMatch("bar");
-   });
+    it('toMatch', () => {
+        let message = 'foo bar baz';
+        expect(message).toMatch(/bar/);
+        expect(message).toMatch('bar');
+    });
 
-   it('not.toMatch', () => {
-      let message = "foo bar baz";
-      expect(message).not.toMatch(/quux/);
-   });
+    it('not.toMatch', () => {
+        let message = 'foo bar baz';
+        expect(message).not.toMatch(/quux/);
+    });
 });
 
 describe('spy interface', () => {
-   describe('restore', () => {
-      it('should allow to restore original object', () => {
-         let obj = {a:  () => 'a', b: () => 'b'};
-         spy(obj, 'a');
-         expect(obj.a).not.toHaveBeenCalled();
-         obj.a.restore();
-         expect(() => {
+    describe('restore', () => {
+        it('should allow to restore original object', () => {
+            let obj = {a: () => 'a', b: () => 'b'};
+            spy(obj, 'a');
             expect(obj.a).not.toHaveBeenCalled();
-         }).toThrow();
-      });
-   });
+            obj.a.restore();
+            expect(() => {
+                expect(obj.a).not.toHaveBeenCalled();
+            }).toThrow();
+        });
+    });
 
-   describe('and.callThrough', () => {
+    describe('and.callThrough', () => {
 
-   });
+    });
 
-   describe('and.returnValue', () => {
+    describe('and.returnValue', () => {
 
-   });
+    });
 
-   describe('and.callFake', () => {
+    describe('and.callFake', () => {
 
-   });
+    });
 });

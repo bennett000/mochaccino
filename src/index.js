@@ -1,4 +1,4 @@
-import chai, {expect as chaiExpect} from 'chai'
+import chai, {expect as chaiExpect} from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
@@ -49,7 +49,7 @@ class Expect {
 
     toBeDefined(){
         if(this._not){
-            throw new Error("toBeDefined assertion cannot be used with 'not' flag");
+            throw new Error('toBeDefined assertion cannot be used with \'not\' flag');
         }
         else {
             this._subject.not.to.be.an('undefined');
