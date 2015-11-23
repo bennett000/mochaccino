@@ -195,28 +195,67 @@ describe('expectation', () => {
     });
 });
 
-describe('spy interface', () => {
-    describe('restore', () => {
-        it('should allow to restore original object', () => {
-            let obj = {a: () => 'a', b: () => 'b'};
-            spy(obj, 'a');
+describe('spy', () => {
+    let funcCalled, obj;
+
+    beforeEach(() => {
+        funcCalled = false;
+        obj = {
+            f: () => {
+                funcCalled = true;
+                return true;
+            }
+        };
+    });
+
+    it.skip('should not call original function by default', () => {
+        spy(obj, 'f');
+        expect(obj.f).not.toHaveBeenCalled();
+        obj.f();
+        expect(funcCalled).toBeFalsy();
+        expect(obj.f).toHaveBeenCalled();
+    });
+
+    it.skip('should allow to call original function', () => {
+        let funcCalled = false;
+        let obj = {
+            a: () => {
+                funcCalled = true;
+            }
+        };
+
+        spy(obj, 'a').and.callThrough();
+        obj.a();
+        expect(obj.a).toHaveBeenCalled();
+        expect(funcCalled).toBeTruthy();
+    });
+
+    it.skip('should allow to restore original object', () => {
+        let obj = {a: () => 'a', b: () => 'b'};
+        spy(obj, 'a');
+        expect(obj.a).not.toHaveBeenCalled();
+        obj.a.restore();
+        expect(() => {
             expect(obj.a).not.toHaveBeenCalled();
-            obj.a.restore();
-            expect(() => {
-                expect(obj.a).not.toHaveBeenCalled();
-            }).toThrow();
+        }).toThrow();
+    });
+
+    it.skip('should allow to set return value', () => {
+        let obj = {a: () => true};
+        spy(obj.a).and.returnValue('abc');
+        expect(obj.a()).toEqual('abc');
+        expect(obj.a).toHaveBeenCalled();
+    });
+
+    it.skip('should allow to provide fake function', () => {
+        let funcCalled = false;
+        let obj = {a: () => true};
+        spy(obj, 'a').and.callFake(() => {
+            funcCalled = true;
+            return 'def';
         });
-    });
-
-    describe('and.callThrough', () => {
-
-    });
-
-    describe('and.returnValue', () => {
-
-    });
-
-    describe('and.callFake', () => {
-
+        expect(obj.a()).toEqual('def');
+        expect(funcCalled).toBeTruthy();
+        expect(obj.a).toHaveBeenCalled();
     });
 });
