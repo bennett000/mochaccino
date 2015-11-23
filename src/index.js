@@ -8,7 +8,7 @@ export function expect(arg){
 }
 
 export function spy(...args){
-    return sinon.spy(...args);
+    return sinon.stub(...args);
 }
 
 class Expect {
@@ -20,6 +20,10 @@ class Expect {
     get not(){
         this._subject = this._subject.not;
         this._not = true;
+        return this;
+    }
+
+    get and(){
         return this;
     }
 
@@ -96,4 +100,8 @@ class Expect {
             this._subject.to.match(expectation);
         }
     }
+}
+
+class Spy {
+
 }

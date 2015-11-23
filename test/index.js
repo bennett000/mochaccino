@@ -208,7 +208,7 @@ describe('spy', () => {
         };
     });
 
-    it.skip('should not call original function by default', () => {
+    it('should not call original function by default', () => {
         spy(obj, 'f');
         expect(obj.f).not.toHaveBeenCalled();
         obj.f();
@@ -217,45 +217,34 @@ describe('spy', () => {
     });
 
     it.skip('should allow to call original function', () => {
-        let funcCalled = false;
-        let obj = {
-            a: () => {
-                funcCalled = true;
-            }
-        };
-
-        spy(obj, 'a').and.callThrough();
-        obj.a();
-        expect(obj.a).toHaveBeenCalled();
+        spy(obj, 'f').and.callThrough();
+        obj.f();
+        expect(obj.f).toHaveBeenCalled();
         expect(funcCalled).toBeTruthy();
     });
 
     it.skip('should allow to restore original object', () => {
-        let obj = {a: () => 'a', b: () => 'b'};
-        spy(obj, 'a');
-        expect(obj.a).not.toHaveBeenCalled();
-        obj.a.restore();
+        spy(obj, 'f');
+        expect(obj.f).not.toHaveBeenCalled();
+        obj.f.restore();
         expect(() => {
-            expect(obj.a).not.toHaveBeenCalled();
+            expect(obj.f).not.toHaveBeenCalled();
         }).toThrow();
     });
 
     it.skip('should allow to set return value', () => {
-        let obj = {a: () => true};
-        spy(obj.a).and.returnValue('abc');
-        expect(obj.a()).toEqual('abc');
-        expect(obj.a).toHaveBeenCalled();
+        spy(obj.f).and.returnValue('abc');
+        expect(obj.f()).toEqual('abc');
+        expect(obj.f).toHaveBeenCalled();
     });
 
     it.skip('should allow to provide fake function', () => {
-        let funcCalled = false;
-        let obj = {a: () => true};
-        spy(obj, 'a').and.callFake(() => {
+        spy(obj, 'f').and.callFake(() => {
             funcCalled = true;
             return 'def';
         });
-        expect(obj.a()).toEqual('def');
+        expect(obj.f()).toEqual('def');
         expect(funcCalled).toBeTruthy();
-        expect(obj.a).toHaveBeenCalled();
+        expect(obj.f).toHaveBeenCalled();
     });
 });
