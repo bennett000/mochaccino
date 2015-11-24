@@ -3,9 +3,6 @@
   "version": "1.0.0-alpha.1",
   "description": "United js test tools",
   "main": "lib/index.js",
-  "bin": {
-    "mocha": "./node_modules/.bin/mocha"
-  },
   "scripts": {
     "pretest": "babel src/index.js -o lib/index.js",
     "test": "mocha",
@@ -24,12 +21,12 @@
   "homepage": "https://github.com/pawelgalazka/moccasin#readme",
   "dependencies": {
     "chai": "3.4.0",
-    "mocha": "2.3.3",
     "sinon": "1.17.2",
     "sinon-chai": "2.8.0"
   },
   "devDependencies": {
     "babel": "5.8.29",
-    "eslint": "^1.9.0"
+    "eslint": "^1.9.0",
+    "mocha": "2.3.3"
   }
 }
