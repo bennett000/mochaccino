@@ -196,55 +196,64 @@ describe('expectation', () => {
 });
 
 describe('spy', () => {
-    let funcCalled, obj;
-
-    beforeEach(() => {
-        funcCalled = false;
-        obj = {
-            f: () => {
-                funcCalled = true;
-                return true;
-            }
-        };
+    it('should create a standalone spy', () => {
+        let sp = spy();
+        expect(sp).not.toHaveBeenCalled();
+        sp();
+        expect(sp).toHaveBeenCalled();
     });
 
-    it('should not call original function by default', () => {
-        spy(obj, 'f');
-        expect(obj.f).not.toHaveBeenCalled();
-        obj.f();
-        expect(funcCalled).toBeFalsy();
-        expect(obj.f).toHaveBeenCalled();
-    });
+    describe('on object', () => {
+        let funcCalled, obj;
 
-    it.skip('should allow to call original function', () => {
-        spy(obj, 'f').and.callThrough();
-        obj.f();
-        expect(obj.f).toHaveBeenCalled();
-        expect(funcCalled).toBeTruthy();
-    });
-
-    it.skip('should allow to restore original object', () => {
-        spy(obj, 'f');
-        expect(obj.f).not.toHaveBeenCalled();
-        obj.f.restore();
-        expect(() => {
-            expect(obj.f).not.toHaveBeenCalled();
-        }).toThrow();
-    });
-
-    it.skip('should allow to set return value', () => {
-        spy(obj.f).and.returnValue('abc');
-        expect(obj.f()).toEqual('abc');
-        expect(obj.f).toHaveBeenCalled();
-    });
-
-    it.skip('should allow to provide fake function', () => {
-        spy(obj, 'f').and.callFake(() => {
-            funcCalled = true;
-            return 'def';
+        beforeEach(() => {
+            funcCalled = false;
+            obj = {
+                f: () => {
+                    funcCalled = true;
+                    return true;
+                }
+            };
         });
-        expect(obj.f()).toEqual('def');
-        expect(funcCalled).toBeTruthy();
-        expect(obj.f).toHaveBeenCalled();
+
+        it('should not call original function by default', () => {
+            spy(obj, 'f');
+            expect(obj.f).not.toHaveBeenCalled();
+            obj.f();
+            expect(funcCalled).toBeFalsy();
+            expect(obj.f).toHaveBeenCalled();
+        });
+
+        it('should allow to call original function', () => {
+            spy(obj, 'f').and.callThrough();
+            obj.f();
+            expect(obj.f).toHaveBeenCalled();
+            expect(funcCalled).toBeTruthy();
+        });
+
+        it('should allow to restore original object', () => {
+            spy(obj, 'f');
+            expect(obj.f).not.toHaveBeenCalled();
+            obj.f.restore();
+            expect(() => {
+                expect(obj.f).not.toHaveBeenCalled();
+            }).toThrow();
+        });
+
+        it('should allow to set return value', () => {
+            spy(obj, 'f').and.returnValue('abc');
+            expect(obj.f()).toEqual('abc');
+            expect(obj.f).toHaveBeenCalled();
+        });
+
+        it('should allow to provide fake function', () => {
+            spy(obj, 'f').and.callFake(() => {
+                funcCalled = true;
+                return 'def';
+            });
+            expect(obj.f()).toEqual('def');
+            expect(funcCalled).toBeTruthy();
+            expect(obj.f).toHaveBeenCalled();
+        });
     });
 });

@@ -3,27 +3,19 @@ import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 chai.use(sinonChai);
 
-export function expect(arg){
-    return new Expect(arg);
-}
-
-export function spy(...args){
-    return sinon.stub(...args);
-}
-
 class Expect {
     constructor(subject){
-        this._subject = chaiExpect(subject);
+        if(subject instanceof Spy){
+            this._subject = chaiExpect(subject.subject);
+        } else {
+            this._subject = chaiExpect(subject);
+        }
         this._not = false;
     }
 
     get not(){
         this._subject = this._subject.not;
         this._not = true;
-        return this;
-    }
-
-    get and(){
         return this;
     }
 
@@ -103,5 +95,39 @@ class Expect {
 }
 
 class Spy {
+    constructor(...args){
+        this._args = args;
+        this._subject = sinon.stub(...args);
+    }
 
+    get and(){
+        return this;
+    }
+
+    get subject(){
+        return this._subject;
+    }
+
+    callThrough(){
+        this._subject.restore();
+        this._subject = sinon.spy(...this._args);
+    }
+
+    returnValue(obj){
+        this._subject.returns(obj);
+    }
+
+    callFake(fake){
+        this._subject.restore();
+        this._subject = sinon.stub(this._args[0], this._args[1], fake);
+    }
+}
+
+
+export function expect(arg){
+    return new Expect(arg);
+}
+
+export function spy(...args){
+    return new Spy(...args);
 }
