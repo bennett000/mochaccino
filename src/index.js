@@ -5,8 +5,8 @@ chai.use(sinonChai);
 
 class Expect {
     constructor(subject){
-        if(subject instanceof Spy){
-            this._subject = chaiExpect(subject.subject);
+        if(subject && subject.spyProxy){
+            this._subject = chaiExpect(subject.getSubject());
         } else {
             this._subject = chaiExpect(subject);
         }
@@ -94,40 +94,37 @@ class Expect {
     }
 }
 
-class Spy {
-    constructor(...args){
-        this._args = args;
-        this._subject = sinon.stub(...args);
-    }
-
-    get and(){
-        return this;
-    }
-
-    get subject(){
-        return this._subject;
-    }
-
-    callThrough(){
-        this._subject.restore();
-        this._subject = sinon.spy(...this._args);
-    }
-
-    returnValue(obj){
-        this._subject.returns(obj);
-    }
-
-    callFake(fake){
-        this._subject.restore();
-        this._subject = sinon.stub(this._args[0], this._args[1], fake);
-    }
-}
-
-
 export function expect(arg){
     return new Expect(arg);
 }
 
-export function spy(...args){
-    return new Spy(...args);
+export function spy(...config){
+    let sinonSpy = sinon.stub(...config);
+
+    function spyProxy(...args){
+        sinonSpy(...args);
+    }
+
+    spyProxy.and = spyProxy;
+    spyProxy.spyProxy = true;
+
+    spyProxy.getSubject = function(){
+        return sinonSpy;
+    };
+
+    spyProxy.callThrough = function(){
+        sinonSpy.restore();
+        sinonSpy = sinon.spy(...config);
+    };
+
+    spyProxy.returnValue = function(obj){
+        sinonSpy.returns(obj);
+    };
+
+    spyProxy.callFake = function(fake){
+        sinonSpy.restore();
+        sinonSpy = sinon.stub(config[0], config[1], fake);
+    };
+
+    return spyProxy;
 }
