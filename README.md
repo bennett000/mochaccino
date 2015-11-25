@@ -16,10 +16,16 @@ Moccasin works as a thin wrapper around mocha, chai, sinon and chai-sinon.
 ```
 npm install -g mocha
 npm install pawelgalazka/moccasin
+npm install --save-dev babel@5
 mkdir test
 ```
 
-Create your first test file as `test/index.js`:
+configure mocha with babel to use es6 syntax (`test/mocha.opts`):
+```
+--compilers js:babel/register
+```
+
+create your first test file as `test/index.js`:
 
 ```javascript
 import {expect} from 'moccasin';
