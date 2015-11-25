@@ -72,7 +72,7 @@ class Expect {
         this._subject.to.be.below(expectation);
     }
 
-    toBeGreatherThan(expectation){
+    toBeGreaterThan(expectation){
         this._subject.to.be.above(expectation);
     }
 

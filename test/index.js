@@ -124,12 +124,12 @@ describe('expectation', () => {
         expect(5).not.toBeLessThan(4);
     });
 
-    it('toBeGreatherThan', () => {
-        expect(5).toBeGreatherThan(4);
+    it('toBeGreaterThan', () => {
+        expect(5).toBeGreaterThan(4);
     });
 
-    it('not.toBeGreatherThan', () => {
-        expect(5).not.toBeGreatherThan(6);
+    it('not.toBeGreaterThan', () => {
+        expect(5).not.toBeGreaterThan(6);
     });
 
     it('toContain', () => {
