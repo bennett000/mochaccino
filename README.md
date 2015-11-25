@@ -28,11 +28,17 @@ configure mocha with babel to use es6 syntax (`test/mocha.opts`):
 create your first test file as `test/index.js`:
 
 ```javascript
-import {expect} from 'moccasin';
+import {expect, spy} from 'moccasin';
 
-describe('test context', () => {
-  it('test', () => {
+describe('moccasin quick start', () => {
+  it('do basic expectations', () => {
     expect(true).toBeTruthy();
+  });
+  
+  it('do spy expectations', () => {
+    let s = spy();
+    s(1, 2);
+    expect(s).toHaveBeenCalledWith(1, 2);
   });
 });
 ```
