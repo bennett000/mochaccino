@@ -72,20 +72,20 @@ for spies:
 
 each expectation can be combined with `not` flag:
 
-```
+```javascript
 expect(a).not.toBe(b)
 ```
 
 
 ## Spies
 
-```
+```javascript
 import {spy} from 'mochaccino';
 ```
 
 **spy(obj, 'funcName');** - spy on objects
 
-```
+```javascript
 spy(obj, 'funcName');
 obj.funcName();
 expect(obj.funcName).toHaveBeenCalled();
@@ -93,7 +93,7 @@ expect(obj.funcName).toHaveBeenCalled();
 
 **spy();** - create standalone spy
 
-```
+```javascript
 let s = spy();
 s();
 expect(s).toHaveBeenCalled();
@@ -101,7 +101,7 @@ expect(s).toHaveBeenCalled();
 
 **spy(obj, 'funcName').and.callFake(func);** - spy on object and call given function instead original one
 
-```
+```javascript
 spy(obj, 'funcName').and.callFake(() => {
   return 123;
 });
