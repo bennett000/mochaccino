@@ -1,21 +1,21 @@
-# moccasin
+# Mochaccino
 United js test tools
 
 Mocha is great but having asserts, spies and assert plugins spread out as separate projects is a bit frustrating,
 especially when you have to jump around all of the different documentations or setup test environment.
 
-Moccasin try to solve that by:
+Mochaccino try to solve that by:
 - providing all of the mocha components together already setup
 - simple and predictable jasmine-like expectations interface
 - documentation for expectations/spies/tests in ONE place
 
-Moccasin works as a thin wrapper around mocha, chai, sinon and chai-sinon.
+Mochaccino works as a thin wrapper around mocha, chai, sinon and chai-sinon.
 
 ## Quick start
 
 ```
 npm install -g mocha
-npm install pawelgalazka/moccasin
+npm install mochaccino
 npm install --save-dev babel@5
 mkdir test
 ```
@@ -28,9 +28,9 @@ configure mocha with babel to use es6 syntax (`test/mocha.opts`):
 create your first test file as `test/index.js`:
 
 ```javascript
-import {expect, spy} from 'moccasin';
+import {expect, spy} from 'mochaccino';
 
-describe('moccasin quick start', () => {
+describe('mochaccino quick start', () => {
   it('do basic expectations', () => {
     expect(true).toBeTruthy();
   });
@@ -78,6 +78,10 @@ expect(a).not.toBe(b)
 
 
 ## Spies
+
+```
+import {spy} from 'mochaccino';
+```
 
 **spy(obj, 'funcName');** - spy on objects
 

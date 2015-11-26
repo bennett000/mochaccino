@@ -1,6 +1,6 @@
 {
-  "name": "moccasin",
-  "version": "1.0.0-alpha.1",
+  "name": "mochaccino",
+  "version": "1.0.0-beta.0",
   "description": "United js test tools",
   "main": "lib/index.js",
   "scripts": {
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pawelgalazka/moccasin.git"
+    "url": "git+https://github.com/pawelgalazka/mochaccino.git"
   },
   "author": "Pawel Galazka",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pawelgalazka/moccasin/issues"
+    "url": "https://github.com/pawelgalazka/mochaccino/issues"
   },
-  "homepage": "https://github.com/pawelgalazka/moccasin#readme",
+  "homepage": "https://github.com/pawelgalazka/mochaccino#readme",
   "dependencies": {
     "chai": "3.4.0",
     "sinon": "1.17.2",
