@@ -1,4 +1,4 @@
-# Mochaccino
+# Mochaccino [![Build Status](https://travis-ci.org/pawelgalazka/mochaccino.svg?branch=master)](https://travis-ci.org/pawelgalazka/mochaccino) [![npm version](https://badge.fury.io/js/mochaccino.svg)](https://badge.fury.io/js/mochaccino)
 United js test tools
 
 Mocha is great but having asserts, spies and assert plugins spread out as separate projects is a bit frustrating,
