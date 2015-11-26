@@ -15,7 +15,7 @@ Mochaccino works as a thin wrapper around mocha, chai, sinon and chai-sinon.
 
 ```
 npm install -g mocha
-npm install mochaccino
+npm install --save-dev mochaccino
 npm install --save-dev babel@5
 mkdir test
 ```
@@ -30,7 +30,7 @@ create your first test file as `test/index.js`:
 ```javascript
 import {expect, spy} from 'mochaccino';
 
-describe('mochaccino quick start', () => {
+describe('mochaccino', () => {
   it('do basic expectations', () => {
     expect(true).toBeTruthy();
   });
