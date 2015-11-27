@@ -109,6 +109,13 @@ expect(obj.funcName()).toEqual(123);
 expect(obj.funcName).toHaveBeenCalled();
 ```
 
+**spy(obj, 'funcName').restore();** - restore original behaviour by removing the spy
+
+```javascript
+spy(obj, 'funcName');
+obj.funcName.restore();
+```
+
 **spy(obj, 'funcName').and.callThrough();** - spy on object but call original method
 
 **spy(obj, 'funcName').and.returnValue(5);** - spy will return a value when called
