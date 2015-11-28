@@ -1,15 +1,13 @@
 # Mochaccino [![Build Status](https://travis-ci.org/pawelgalazka/mochaccino.svg?branch=master)](https://travis-ci.org/pawelgalazka/mochaccino) [![npm version](https://badge.fury.io/js/mochaccino.svg)](https://badge.fury.io/js/mochaccino)
 United js test tools
 
-Mocha is great but having asserts, spies and assert plugins spread out as separate projects is a bit frustrating,
+Mocha is great but having asserts, assert plugins and spies spread out as separate projects is a bit frustrating,
 especially when you have to jump around all of the different documentations or setup test environment.
 
-Mochaccino try to solve that by:
-- providing all of the mocha components together already setup
-- simple and predictable jasmine-like expectations interface
+Mochaccino goals:
 - documentation for expectations/spies/tests in ONE place
-
-Mochaccino works as a thin wrapper around mocha, chai, sinon and chai-sinon.
+- providing all of the mocha important components together already setup
+- shallow learning curve, quick to start and work with
 
 ## Quick start
 
