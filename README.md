@@ -48,6 +48,41 @@ and then just run in the command line:
 npm test
 ```
 
+## DOM testing
+
+```javascript```
+import {expect, dom} from 'mochaccino';
+
+describe('dom testing', () => {
+    beforeEach(() => {
+        dom.create();
+    });
+
+    afterEach(() => {
+        dom.destroy();
+    });
+
+    it('should append a child to the body', () => {
+        let par = document.createElement('P');
+        let text = document.createTextNode('some text');
+        par.appendChild(text);
+        document.body.appendChild(par);
+        let parCount = document.getElementsByTagName('P');
+
+        expect(document.body.innerHTML).toBeDefined();
+        expect(parCount.length).toEqual(1);
+    });
+
+    it('should not find the previously appended child', () => {
+        let parCount = document.getElementsByTagName('P');
+
+        expect(document.body.innerHTML).toEqual('');
+        expect(parCount.length).toEqual(0);
+    });
+});
+
+```
+
 ## Expectations
 
 * expect(a).toBe(b)
