@@ -10,20 +10,22 @@ Mochaccino goals:
 - shallow learning curve, quick to start and work with
 
 ## Quick start
-
 ```
-npm install -g mocha
-npm install --save-dev mochaccino
-npm install --save-dev babel@5
-mkdir test
+npm install --save-dev mochaccino mocha babel@5
 ```
 
-configure mocha with babel to use es6 syntax (`test/mocha.opts`):
+add the following to your `package.json` :
 ```
---compilers js:babel/register
+{
+ ...
+ "scripts": {
+   "test": "mocha --compilers js:babel/register"
+ }
+ ...
+}
 ```
 
-create your first test file as `test/index.js`:
+create a directory `test` with a file `index.js`:
 
 ```javascript
 import {expect, spy} from 'mochaccino';
@@ -43,7 +45,7 @@ describe('mochaccino', () => {
 and then just run in the command line:
 
 ```
-mocha
+npm test
 ```
 
 ## Expectations
