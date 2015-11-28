@@ -1,6 +1,6 @@
 {
   "name": "mochaccino",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0",
   "description": "United js test tools",
   "keywords": [
     "mocha",
@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "babel": "5.8.29",
-    "eslint": "^1.9.0",
+    "eslint": "1.9.0",
     "mocha": "2.3.3"
   }
 }
