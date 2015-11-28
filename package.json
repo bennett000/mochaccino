@@ -1,6 +1,6 @@
 {
   "name": "mochaccino",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "United js test tools",
   "keywords": [
     "mocha",
@@ -11,7 +11,7 @@
   "main": "lib/index.js",
   "scripts": {
     "pretest": "babel src/index.js -o lib/index.js",
-    "test": "mocha",
+    "test": "mocha --compilers js:babel/register",
     "prepublish": "babel src/index.js -o lib/index.js",
     "lint": "eslint src test"
   },
