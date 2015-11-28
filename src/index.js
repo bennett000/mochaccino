@@ -1,9 +1,11 @@
 import chai, {expect as chaiExpect} from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
+import jsdomify from 'jsdomify';
+
 chai.use(sinonChai);
 
-class Expect {
+export class Expect {
     constructor(subject){
         if(subject && subject.spyProxy){
             this._subject = chaiExpect(subject.getSubject());
@@ -128,3 +130,5 @@ export function spy(...config){
 
     return spyProxy;
 }
+
+export const dom = jsdomify;

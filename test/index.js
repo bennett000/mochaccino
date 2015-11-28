@@ -1,5 +1,5 @@
 /* eslint no-undef:0 */
-import {expect, spy} from '../lib/index';
+import {expect, spy, dom} from '../lib/index';
 
 describe('expectation', () => {
     it('toBe', () => {
@@ -255,5 +255,33 @@ describe('spy', () => {
             expect(funcCalled).toBeTruthy();
             expect(obj.f).toHaveBeenCalled();
         });
+    });
+});
+
+describe('dom testing', () => {
+    beforeEach(() => {
+        dom.create();
+    });
+
+    afterEach(() => {
+        dom.destroy();
+    });
+
+    it('should append a child to the body', () => {
+        let par = document.createElement('P');
+        let text = document.createTextNode('some text');
+        par.appendChild(text);
+        document.body.appendChild(par);
+        let parCount = document.getElementsByTagName('P');
+
+        expect(document.body.innerHTML).toBeDefined();
+        expect(parCount.length).toEqual(1);
+    });
+
+    it('should not find the previously appended child', () => {
+        let parCount = document.getElementsByTagName('P');
+
+        expect(document.body.innerHTML).toEqual('');
+        expect(parCount.length).toEqual(0);
     });
 });
