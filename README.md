@@ -52,6 +52,7 @@ npm test
 
 Mochaccino dom helper lets you create a dom implementation (jsdom) inside the node enviroment.
 No browser required.
+(Thanks to jsdomify https://github.com/podio/jsdomify, read more: https://medium.com/podio-engineering-blog/from-karma-to-mocha-with-a-taste-of-jsdom-c9c703a06b21#.fohwr4vyb)
 
 ```javascript
 import {expect, dom} from 'mochaccino';
