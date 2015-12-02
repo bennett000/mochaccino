@@ -48,44 +48,7 @@ and then just run in the command line:
 npm test
 ```
 
-## DOM testing
 
-Mochaccino dom helper lets you create a dom implementation (jsdom) inside the node enviroment.
-No browser required.
-(Thanks to jsdomify https://github.com/podio/jsdomify, read more: https://medium.com/podio-engineering-blog/from-karma-to-mocha-with-a-taste-of-jsdom-c9c703a06b21#.fohwr4vyb)
-
-```javascript
-import {expect, dom} from 'mochaccino';
-
-describe('dom testing', () => {
-    beforeEach(() => {
-        dom.create();
-    });
-
-    afterEach(() => {
-        dom.destroy();
-    });
-
-    it('should append a child to the body', () => {
-        let par = document.createElement('P');
-        let text = document.createTextNode('some text');
-        par.appendChild(text);
-        document.body.appendChild(par);
-        let parCount = document.getElementsByTagName('P');
-
-        expect(document.body.innerHTML).toBeDefined();
-        expect(parCount.length).toEqual(1);
-    });
-
-    it('should not find the previously appended child', () => {
-        let parCount = document.getElementsByTagName('P');
-
-        expect(document.body.innerHTML).toEqual('');
-        expect(parCount.length).toEqual(0);
-    });
-});
-
-```
 
 ## Expectations
 
@@ -158,3 +121,42 @@ obj.funcName.restore();
 **spy(obj, 'funcName').and.callThrough();** - spy on object but call original method
 
 **spy(obj, 'funcName').and.returnValue(5);** - spy will return a value when called
+
+
+## DOM testing
+
+Mochaccino dom helper lets you create a dom implementation (jsdom) inside the node enviroment.
+No browser required.
+(Thanks to jsdomify https://github.com/podio/jsdomify, read more: https://medium.com/podio-engineering-blog/from-karma-to-mocha-with-a-taste-of-jsdom-c9c703a06b21#.fohwr4vyb)
+
+```javascript
+import {expect, dom} from 'mochaccino';
+
+describe('dom testing', () => {
+    beforeEach(() => {
+        dom.create();
+    });
+
+    afterEach(() => {
+        dom.destroy();
+    });
+
+    it('should append a child to the body', () => {
+        let par = document.createElement('P');
+        let text = document.createTextNode('some text');
+        par.appendChild(text);
+        document.body.appendChild(par);
+        let parCount = document.getElementsByTagName('P');
+
+        expect(document.body.innerHTML).toBeDefined();
+        expect(parCount.length).toEqual(1);
+    });
+
+    it('should not find the previously appended child', () => {
+        let parCount = document.getElementsByTagName('P');
+
+        expect(document.body.innerHTML).toEqual('');
+        expect(parCount.length).toEqual(0);
+    });
+});
+```
