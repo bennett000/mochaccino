@@ -28,7 +28,7 @@ add the following to your `package.json` :
 create a directory `test` with a file `index.js`:
 
 ```javascript
-import {expect, spy} from 'mochaccino';
+import {expect, spy, dom} from 'mochaccino';
 
 describe('mochaccino', () => {
   it('do basic expectations', () => {
@@ -39,6 +39,15 @@ describe('mochaccino', () => {
     let s = spy();
     s(1, 2);
     expect(s).toHaveBeenCalledWith(1, 2);
+  });
+  
+  it('do DOM testing', () => {
+    dom.create();
+    let par = document.createElement('P');
+    document.body.appendChild(par);
+    let parCount = document.getElementsByTagName('P');
+    expect(parCount.length).toEqual(1);
+    dom.destroy();
   });
 });
 ```
