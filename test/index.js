@@ -285,3 +285,22 @@ describe('dom testing', () => {
         expect(parCount.length).toEqual(0);
     });
 });
+
+describe('quick start example', () => {
+    it('do basic expectations', () => {
+        expect(true).toBeTruthy();
+    });
+
+    it('do spy expectations', () => {
+        let s = spy();
+        s(1, 2);
+        expect(s).toHaveBeenCalledWith(1, 2);
+    });
+
+    it('do DOM testing', () => {
+        dom.create();
+        document.body.appendChild(document.createElement('p'));
+        expect(document.getElementsByTagName('p').length).toEqual(1);
+        dom.destroy();
+    });
+});
