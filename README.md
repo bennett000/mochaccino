@@ -43,10 +43,8 @@ describe('mochaccino', () => {
   
   it('do DOM testing', () => {
     dom.create();
-    let par = document.createElement('P');
-    document.body.appendChild(par);
-    let parCount = document.getElementsByTagName('P');
-    expect(parCount.length).toEqual(1);
+    document.body.appendChild(document.createElement('p'));
+    expect(document.getElementsByTagName('p').length).toEqual(1);
     dom.destroy();
   });
 });
