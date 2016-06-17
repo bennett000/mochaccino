@@ -11,7 +11,7 @@ Mochaccino goals:
 
 ## Quick start
 ```
-npm install --save-dev mochaccino mocha babel@5
+npm install --save-dev mochaccino mocha babel-core babel-register babel-preset-es2015
 ```
 
 add the following to your `package.json` :
@@ -19,7 +19,10 @@ add the following to your `package.json` :
 {
  ...
  "scripts": {
-   "test": "mocha --compilers js:babel/register"
+   "test": "mocha --compilers js:babel-register"
+ }
+ "babel": {
+   "presets": ["es2015"]
  }
  ...
 }
