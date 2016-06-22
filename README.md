@@ -169,3 +169,53 @@ describe('dom testing', () => {
     });
 });
 ```
+
+Unfortunately approach above is not recommended for testing React
+component as React's source code makes several assumptions about
+the environment it is running in, and one of them is that the
+`document` that is found at "require time" is going to be
+the one and only document it ever needs to worry about.
+As a result, this type of "reloading" ends up causing more pain
+than it prevents.
+
+In that case `document` needs to be created only once before
+requiring React. This can be done by:
+
+```
+mocha --require mochaccino/dom-setup --compilers js:babel-register
+```
+
+and then "clearing" existing document between the tests to make
+sure that components do not leak:
+
+```javascript
+import {expect, dom} from 'mochaccino';
+
+describe('dom testing', () => {
+    beforeEach(() => {
+        dom.clear();
+    });
+
+    afterEach(() => {
+        dom.clear();
+    });
+
+    it('should append a child to the body', () => {
+        let par = document.createElement('P');
+        let text = document.createTextNode('some text');
+        par.appendChild(text);
+        document.body.appendChild(par);
+        let parCount = document.getElementsByTagName('P');
+
+        expect(document.body.innerHTML).toBeDefined();
+        expect(parCount.length).toEqual(1);
+    });
+
+    it('should not find the previously appended child', () => {
+        let parCount = document.getElementsByTagName('P');
+
+        expect(document.body.innerHTML).toEqual('');
+        expect(parCount.length).toEqual(0);
+    });
+});
+```
