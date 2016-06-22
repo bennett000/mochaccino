@@ -259,30 +259,68 @@ describe('spy', () => {
 });
 
 describe('dom testing', () => {
-    beforeEach(() => {
-        dom.clear();
+    describe('by creating/destroying the dom for each test', () => {
+        beforeEach(() => {
+            dom.create();
+        });
+
+        afterEach(() => {
+            dom.destroy();
+        });
+
+        it('should append a child to the body', () => {
+            let par = document.createElement('P');
+            let text = document.createTextNode('some text');
+            par.appendChild(text);
+            document.body.appendChild(par);
+            let parCount = document.getElementsByTagName('P');
+
+            expect(document.body.innerHTML).toBeDefined();
+            expect(parCount.length).toEqual(1);
+        });
+
+        it('should not find the previously appended child', () => {
+            let parCount = document.getElementsByTagName('P');
+
+            expect(document.body.innerHTML).toEqual('');
+            expect(parCount.length).toEqual(0);
+        });
     });
 
-    afterEach(() => {
-        dom.clear();
-    });
+    describe('by clearing the dom for each test, keeping the same document', () => {
+        before(() => {
+            dom.create();
+        });
 
-    it('should append a child to the body', () => {
-        let par = document.createElement('P');
-        let text = document.createTextNode('some text');
-        par.appendChild(text);
-        document.body.appendChild(par);
-        let parCount = document.getElementsByTagName('P');
+        after(() => {
+            dom.destroy();
+        });
 
-        expect(document.body.innerHTML).toBeDefined();
-        expect(parCount.length).toEqual(1);
-    });
+        beforeEach(() => {
+            dom.clear();
+        });
 
-    it('should not find the previously appended child', () => {
-        let parCount = document.getElementsByTagName('P');
+        afterEach(() => {
+            dom.clear();
+        });
 
-        expect(document.body.innerHTML).toEqual('');
-        expect(parCount.length).toEqual(0);
+        it('should append a child to the body', () => {
+            let par = document.createElement('P');
+            let text = document.createTextNode('some text');
+            par.appendChild(text);
+            document.body.appendChild(par);
+            let parCount = document.getElementsByTagName('P');
+
+            expect(document.body.innerHTML).toBeDefined();
+            expect(parCount.length).toEqual(1);
+        });
+
+        it('should not find the previously appended child', () => {
+            let parCount = document.getElementsByTagName('P');
+
+            expect(document.body.innerHTML).toEqual('');
+            expect(parCount.length).toEqual(0);
+        });
     });
 });
 
@@ -298,9 +336,9 @@ describe('quick start example', () => {
     });
 
     it('do DOM testing', () => {
-        dom.clear();
+        dom.create();
         document.body.appendChild(document.createElement('p'));
         expect(document.getElementsByTagName('p').length).toEqual(1);
-        dom.clear();
+        dom.destroy();
     });
 });
