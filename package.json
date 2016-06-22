@@ -11,7 +11,7 @@
   "main": "lib/index.js",
   "scripts": {
     "pretest": "babel src -d lib",
-    "test": "mocha --compilers js:babel-register",
+    "test": "mocha --require ./lib/dom-setup --compilers js:babel-register",
     "prepublish": "npm test && npm run lint",
     "lint": "eslint src test",
     "clean": "rm -rf node_modules"
@@ -28,7 +28,7 @@
   "homepage": "https://github.com/pawelgalazka/mochaccino#readme",
   "dependencies": {
     "chai": "3.4.0",
-    "jsdomify": "1.0.2",
+    "jsdom": "9.2.1",
     "sinon": "1.17.2",
     "sinon-chai": "2.8.0"
   },
@@ -41,6 +41,8 @@
     "mocha": "2.3.3"
   },
   "babel": {
-    "presets": ["es2015"]
+    "presets": [
+      "es2015"
+    ]
   }
 }

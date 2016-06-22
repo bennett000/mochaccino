@@ -131,4 +131,11 @@ export function spy(...config){
     return spyProxy;
 }
 
-export const dom = jsdomify;
+export const dom = {
+    create: () => {
+
+    },
+    destroy: () => {
+
+    }
+};
