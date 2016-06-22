@@ -1,6 +1,7 @@
 import chai, {expect as chaiExpect} from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
+import { jsdom } from 'jsdom';
 
 chai.use(sinonChai);
 
@@ -131,6 +132,22 @@ export function spy(...config){
 }
 
 export const dom = {
+    create: () => {
+        const exposedProperties = ['window', 'navigator', 'document'];
+
+        global.document = jsdom('');
+        global.window = document.defaultView;
+        Object.keys(document.defaultView).forEach((property) => {
+            if (typeof global[property] === 'undefined') {
+                exposedProperties.push(property);
+                global[property] = document.defaultView[property];
+            }
+        });
+
+        global.navigator = {
+            userAgent: 'node.js'
+        };
+    },
     clear: () => {
         while(document.body.firstChild) {
             document.body.removeChild(document.body.firstChild);
