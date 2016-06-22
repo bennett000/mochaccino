@@ -1,7 +1,6 @@
 import chai, {expect as chaiExpect} from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-import jsdomify from 'jsdomify';
 
 chai.use(sinonChai);
 
