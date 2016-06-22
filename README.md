@@ -1,4 +1,4 @@
-# mochaccino 1.1.0 [![Build Status](https://travis-ci.org/pawelgalazka/mochaccino.svg?branch=master)](https://travis-ci.org/pawelgalazka/mochaccino) [![npm version](https://badge.fury.io/js/mochaccino.svg)](https://badge.fury.io/js/mochaccino)
+# mochaccino 1.2.0 [![Build Status](https://travis-ci.org/pawelgalazka/mochaccino.svg?branch=master)](https://travis-ci.org/pawelgalazka/mochaccino) [![npm version](https://badge.fury.io/js/mochaccino.svg)](https://badge.fury.io/js/mochaccino)
 United js test tools
 
 Mocha is great but having asserts, assert plugins and spies spread out as separate projects is a bit frustrating,
@@ -137,7 +137,6 @@ obj.funcName.restore();
 
 Mochaccino dom helper lets you run a dom implementation (jsdom) inside the node enviroment.
 No browser required.
-(Thanks to jsdomify https://github.com/podio/jsdomify, read more: https://medium.com/podio-engineering-blog/from-karma-to-mocha-with-a-taste-of-jsdom-c9c703a06b21#.fohwr4vyb)
 
 ```javascript
 import {expect, dom} from 'mochaccino';
