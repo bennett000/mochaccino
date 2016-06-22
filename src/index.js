@@ -132,14 +132,13 @@ export function spy(...config){
 }
 
 export const dom = {
+    exposedProperties: ['window', 'navigator', 'document'],
     create: () => {
-        const exposedProperties = ['window', 'navigator', 'document'];
-
         global.document = jsdom('');
         global.window = document.defaultView;
         Object.keys(document.defaultView).forEach((property) => {
             if (typeof global[property] === 'undefined') {
-                exposedProperties.push(property);
+                dom.exposedProperties.push(property);
                 global[property] = document.defaultView[property];
             }
         });
@@ -147,6 +146,15 @@ export const dom = {
         global.navigator = {
             userAgent: 'node.js'
         };
+    },
+    destroy: () => {
+        if (typeof global.window !== 'undefined') {
+            global.window.close();
+        }
+        global.document = undefined;
+        dom.exposedProperties.forEach((property) => {
+            delete global[property];
+        });
     },
     clear: () => {
         while(document.body.firstChild) {
