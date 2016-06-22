@@ -260,11 +260,11 @@ describe('spy', () => {
 
 describe('dom testing', () => {
     beforeEach(() => {
-        dom.create();
+        dom.clear();
     });
 
     afterEach(() => {
-        dom.destroy();
+        dom.clear();
     });
 
     it('should append a child to the body', () => {
@@ -298,9 +298,9 @@ describe('quick start example', () => {
     });
 
     it('do DOM testing', () => {
-        dom.create();
+        dom.clear();
         document.body.appendChild(document.createElement('p'));
         expect(document.getElementsByTagName('p').length).toEqual(1);
-        dom.destroy();
+        dom.clear();
     });
 });

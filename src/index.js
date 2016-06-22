@@ -132,10 +132,9 @@ export function spy(...config){
 }
 
 export const dom = {
-    create: () => {
-
-    },
-    destroy: () => {
-
+    clear: () => {
+        while(document.body.firstChild) {
+            document.body.removeChild(document.body.firstChild);
+        }
     }
 };
