@@ -189,33 +189,20 @@ and then "clearing" existing document between the tests to make
 sure that components do not leak:
 
 ```javascript
-import {expect, dom} from 'mochaccino';
+import React from 'react';
+import { shallow } from 'enzyme';
+import { expect, dom } from 'mochaccino';
+import App from '../../app/components/App/App';
 
-describe('dom testing', () => {
-    beforeEach(() => {
-        dom.clear();
-    });
+describe('<App>', () => {
 
-    afterEach(() => {
-        dom.clear();
-    });
+  beforeEach(() => {
+    dom.clear();
+  });
 
-    it('should append a child to the body', () => {
-        let par = document.createElement('P');
-        let text = document.createTextNode('some text');
-        par.appendChild(text);
-        document.body.appendChild(par);
-        let parCount = document.getElementsByTagName('P');
-
-        expect(document.body.innerHTML).toBeDefined();
-        expect(parCount.length).toEqual(1);
-    });
-
-    it('should not find the previously appended child', () => {
-        let parCount = document.getElementsByTagName('P');
-
-        expect(document.body.innerHTML).toEqual('');
-        expect(parCount.length).toEqual(0);
-    });
+  it('should render', () => {
+    const wrapper = shallow(<App />);
+    expect(wrapper).toBeDefined();
+  });
 });
 ```
