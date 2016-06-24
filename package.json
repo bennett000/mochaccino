@@ -1,6 +1,6 @@
 {
   "name": "mochaccino",
-  "version": "1.2.0-beta",
+  "version": "1.2.0",
   "description": "United js test tools",
   "keywords": [
     "mocha",
